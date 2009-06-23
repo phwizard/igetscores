@@ -1,3 +1,5 @@
+#summary Explains how our iPhone client works - also check the examples of implementations.
+
 =iPhone client=
 
 Client is implemented as a Singleton pattern. You need to implement the OnlineScoreDelegate protocol to work with it:
