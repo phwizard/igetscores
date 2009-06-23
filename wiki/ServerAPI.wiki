@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary This is a guide on server API for those who want to improve / modify the client code or write their own implementation from scratch.
 
 = get_scores.php =
 
