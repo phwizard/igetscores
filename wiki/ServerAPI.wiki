@@ -70,7 +70,7 @@ You need to supply the custom parameters if they have been set up for current su
 
 these are returned here:
 {{{
-<game_scores count="10" error=" *0* ">
+<game_scores count="10" error="0">
 }}}
 
 || *0* || Some error occured - result has not been added. ||
