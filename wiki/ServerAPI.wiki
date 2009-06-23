@@ -45,7 +45,7 @@ Adds a high score result into DB.
 Returns an XML with rankings for the current game.
 
 
-Parameters:
+===Parameters===
 
 
 || *subgame_id* || Integer || Subgame ID (you should know your subgame ID - this is static)  ||
@@ -59,12 +59,12 @@ Parameters:
 Also, for XML returned, the parameters from _get_scores_ work. The difference is you don't have to specify 'preview' in order for _limit_above_ and _limit_below_ to work.
 
 
-Custom parameters:
+===Custom parameters===
 
 You need to supply the custom parameters if they have been set up for current subgame. Just add them as normal parameters. Example: "..&secrets=5&kills=11&level=3"
 
 
-Error flags:
+===Error flags===
 
 these are returned here:
 <game_scores count="10" error=" *0* ">
@@ -73,5 +73,3 @@ these are returned here:
 || *1* || Result added successfully. ||
 || *2* || Result updated. ||
 || *4* || Not enough parameters. ||
-
-
