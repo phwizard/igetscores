@@ -84,8 +84,10 @@ the answer processing - I've broken this into 2 callbacks for the purpose of con
 
 For the sake of convenience I've made it so that the calls:
 
+{{{
 - (OnlineScoreOperation*) addScore: (NSDictionary*) scoreDict;
 - (OnlineScoreOperation*) getScores: (NSDictionary*) scoreDict;
+}}}
 
 return a pointer to the operation, the same pointer goes with callback so you can make multiple calls at the same time and differentiate them. 
 
