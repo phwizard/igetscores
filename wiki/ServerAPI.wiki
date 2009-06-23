@@ -28,13 +28,8 @@ Parameters:
 
 || *limit*|| Integer || defines how many records to display. For example, you need to display top 10, then you put limit=10  ||
 
-|| *preview* || Integer || Adds a 'virtual' score to the table - score taken from _preview_ value.
-Sometimes it is cool to show users their ranking in the global high scores table BEFORE adding the score so that they can decide whether to add it and input their name.
-In case _name_ is not specified, "Your score" will be displayed as a name for a preview score record. ||
+|| *preview* || Integer || Adds a 'virtual' score to the table - score taken from _preview_ value. Sometimes it is cool to show users their ranking in the global high scores table BEFORE adding the score so that they can decide whether to add it and input their name. In case _name_ is not specified, "Your score" will be displayed as a name for a preview score record. ||
 
-|| *limit_above* and *limit_below* || Integer || To be used together with _preview_.
-These parameters specify how many records to show above and under user's current record.
-Can be used, for example, when you need to display the current user's preview records and also show who are his neighbors in the leaderboard.
-_Limit_ and _offset_ become ineffective when these two are used. ||
+|| *limit_above* and *limit_below* || Integer || To be used together with _preview_. These parameters specify how many records to show above and under user's current record. Can be used, for example, when you need to display the current user's preview records and also show who are his neighbors in the leaderboard. _Limit_ and _offset_ become ineffective when these two are used. ||
 
 ||*name* || String || Determines a name to display for current user's ranking when in _preview_ mode. ||
