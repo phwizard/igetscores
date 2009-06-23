@@ -2,13 +2,20 @@
 
 = XML reference =
 
+An example of XML returned by get_scores.php with _preview_ parameter:
 
+{{{
   <?xml version="1.0" standalone="yes"?>
 <game_scores count="6" error="0">
-<score><name>Masha</name><email>tarr83@mail.ru</email><value>3100</value><datetime>2009-03-12 00:00:00</datetime></score>
-<score><name>Vasilisa</name><email>tarr83@mail.ru</email><value>1200</value><datetime>2009-03-17 00:00:00</datetime></score>
-<score own="1"><name>Your score</name><email></email><value>1000</value><datetime></datetime></score>
-<score><name>Petyabik</name><email>tarr83@mail.ru</email><value>500</value><datetime>2009-03-08 00:00:00</datetime></score>
-<score><name>Sveta</name><email>tarr83@mail.ru</email><value>120</value><datetime>2009-03-10 00:00:00</datetime></score>
-<score><name>Misha</name><email>tarr83@mail.ru</email><value>100</value><datetime>2009-03-02 00:00:00</datetime></score>
+<score><name>Masha</name><email>tarr83@mail.ru</email><value>3100</value><datetime>2009-03-12 00:00:00</datetime><country_code>Netherlands</country_code></score>
+<score><name>Vasilisa</name><email>tarr83@mail.ru</email><value>1200</value><datetime>2009-03-17 00:00:00</datetime><country_code>Netherlands</country_code></score>
+<score own="1"><name>Your score</name><email></email><value>1000</value><datetime></datetime><country_code>Netherlands</country_code></score>
+<score><name>Petyabik</name><email>tarr83@mail.ru</email><value>500</value><datetime>2009-03-08 00:00:00</datetime><country_code>Netherlands</country_code></score>
+<score><name>Sveta</name><email>tarr83@mail.ru</email><value>120</value><datetime>2009-03-10 00:00:00</datetime><country_code>Netherlands</country_code></score>
+<score><name>Misha</name><email>tarr83@mail.ru</email><value>100</value><datetime>2009-03-02 00:00:00</datetime><country_code>Netherlands</country_code></score>
 </game_scores>
+}}}
+
+
+|| count || the number of records in XML returned ||
+|| own="1" || this parameter tells the client which score to highlight as own user's score ||
