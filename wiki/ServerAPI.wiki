@@ -14,7 +14,6 @@ An example of data returned:
 <game_scores count="10" error="0">
   <score>
    <name>Petya</name>
-   <email>petya@email.com</email>
    <value>4000</value>
    <datetime>0000-00-00 00:00:00</datetime>
    <country_code>Netherlands</country_code>
