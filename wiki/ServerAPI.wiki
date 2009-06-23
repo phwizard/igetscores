@@ -9,7 +9,7 @@ get_scores.php?subgame_id=ID ( ID = 1, 2, .. ) [limit, offset, interval, preview
 
 An example of data returned:
 
-<pre>
+{{{
  <?xml version="1.0" standalone="yes"?>
 <game_scores count="10" error="0">
   <score>
@@ -20,15 +20,15 @@ An example of data returned:
   </score>
   ...
  </game_scores>
-</pre>
+}}}
 
 Parameters:
 
-*subgame_id*
-Value is an integer number. Subgame ID.
+|| *subgame_id* ||
+Value is an integer number. || Subgame ID.
 
-*limit*
-Value is an integer number, defines how many records to display. For example, you need to display top 10, then you put limit=10
+|| *limit*||
+Value is an integer number,|| defines how many records to display. For example, you need to display top 10, then you put limit=10
 
 *preview*
 Value is an integer number, adds a 'virtual' score to the table - score taken from _preview_ value.
