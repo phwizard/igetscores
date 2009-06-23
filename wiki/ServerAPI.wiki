@@ -39,6 +39,8 @@ Parameters:
 Note: when not in _preview_ mode, the most recent result with the matching _device ID_ will be highlighted with "own" flag.
 
 
+----
+
 = add_score.php =
 
 Adds a high score result into DB. 
@@ -67,7 +69,9 @@ You need to supply the custom parameters if they have been set up for current su
 ===Error flags===
 
 these are returned here:
+{{{
 <game_scores count="10" error=" *0* ">
+}}}
 
 || *0* || Some error occured - result has not been added. ||
 || *1* || Result added successfully. ||
