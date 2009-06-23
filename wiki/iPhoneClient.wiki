@@ -46,11 +46,14 @@ In case everything is good, we can proceed with any requests now. For example:
 }}}
 
 All the parameters should be passed through NSDictionary, same applies to addScore:
+
+{{{
     [[OnlineScore getInstance] addScore: [NSDictionary dictionaryWithObjectsAndKeys:
                                            @"4", @"subgame_id",
                                            @"user", @"name",
                                            @"123", @"value",
                                            nil]];
+}}}
 
 in case we want for server to return the answer, we need to add parameters (check server API description - ServerAPI)
 
