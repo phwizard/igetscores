@@ -1,0 +1,91 @@
+=iPhone client=
+
+Client is implemented as a Singleton pattern. You need to implement the OnlineScoreDelegate protocol to work with it:
+
+{{{
+@protocol OnlineScoreDelegate 
+@required
+- (void) gotScores: (NSDictionary*) dict forOperation: (OnlineScoreOperation*) op;
+- (void) scoreAdded: (NSDictionary*) dict forOperation: (OnlineScoreOperation*) op;
+- (void) failWithData: (NSData*) data forOperation: (OnlineScoreOperation*) op;
+- (void) gotAccessToken: (BOOL) granted;
+@end
+}}}
+
+Currently the following functions are implemented:
+
+{{{
+- (void) setConsumerKey: (NSString*) key andSecret: (NSString*) secret;
+
+- (OnlineScoreOperation*) addScore: (NSDictionary*) scoreDict;
+- (OnlineScoreOperation*) getScores: (NSDictionary*) scoreDict;
+
+- (void) getAccessToken;
+}}}
+
+The names are quire self explanatory but please not there is a strict initialization order:
+
+{{{
+    [[OnlineScore getInstance] setConsumerKey: @"somekey" andSecret: @"somesecret"];
+    [[OnlineScore getInstance] setDelegate: self];
+    [[OnlineScore getInstance] getAccessToken];
+}}}
+
+and we wait for callback after that
+
+{{{
+ - (void) gotAccessToken: (BOOL) granted; 
+}}}
+
+"granted" will tell us if we were successful to authorized at the server.
+
+In case everything is good, we can proceed with any requests now. For example:
+
+{{{
+    [[OnlineScore getInstance] getScores: [NSDictionary dictionaryWithObject: @"4" forKey: @"subgame_id"]];
+}}}
+
+All the parameters should be passed through NSDictionary, same applies to addScore:
+    [[OnlineScore getInstance] addScore: [NSDictionary dictionaryWithObjectsAndKeys:
+                                           @"4", @"subgame_id",
+                                           @"user", @"name",
+                                           @"123", @"value",
+                                           nil]];
+
+in case we want for server to return the answer, we need to add parameters (check server API description - ServerAPI)
+
+the answer processing - I've broken this into 2 callbacks for the purpose of convenience so in the end we have NSDictionary as well, this is explained by this sample code:
+
+{{{
+- (void) gotScores: (NSDictionary*) dict forOperation: (OnlineScoreOperation*) op {
+    if (dict) {
+        NSDictionary* scoreResults = dict; 
+        NSArray *array = [dict objectForKey: @"scores"];
+
+        printf("error: %s, error message: %s \n", [[dict objectForKey: @"error"] UTF8String], [[dict objectForKey: @"error_message"] UTF8String]);
+
+        if (scoreResults && array) {
+            NSLog(@"scores count: %@", [scoreResults objectForKey: @"count"]);
+            NSLog(@"actual array size: %d", [array count]);
+            for (int i = 0; i < [array count]; i++) {
+                printf("%s %s %s %s \n", [[[array objectAtIndex: i] objectForKey: @"name"] UTF8String],
+                       [[[array objectAtIndex: i] objectForKey: @"email"] UTF8String],
+                       [[[array objectAtIndex: i] objectForKey: @"value"] UTF8String],
+                       [[[array objectAtIndex: i] objectForKey: @"datetime"] UTF8String]);
+            }
+        } else NSLog(@"looks like some error occured, sorry...");
+    }    
+}
+
+}}}
+
+For the sake of convenience I've made it so that the calls:
+
+- (OnlineScoreOperation*) addScore: (NSDictionary*) scoreDict;
+- (OnlineScoreOperation*) getScores: (NSDictionary*) scoreDict;
+
+return a pointer to the operation, the same pointer goes with callback so you can make multiple calls at the same time and differentiate them. 
+
+The calls are implemented with the help of NSOperation so they don't overload the GUI.
+
+_a guide by Andrew Kopanev_
