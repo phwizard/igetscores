@@ -32,4 +32,4 @@ Parameters:
 
 || *limit_above* and *limit_below* || Integer || To be used together with _preview_. These parameters specify how many records to show above and under user's current record. Can be used, for example, when you need to display the current user's preview records and also show who are his neighbors in the leaderboard. _Limit_ and _offset_ become ineffective when these two are used. ||
 
-||*name* || String || Determines a name to display for current user's ranking when in _preview_ mode. ||
+|| *name* || String || Determines a name to display for current user's ranking when in _preview_ mode. ||
