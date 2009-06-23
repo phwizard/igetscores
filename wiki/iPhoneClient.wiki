@@ -55,7 +55,7 @@ All the parameters should be passed through NSDictionary, same applies to addSco
                                            nil]];
 }}}
 
-in case we want for server to return the answer, we need to add parameters (check server API description - ServerAPI)
+in case we want for server to return the answer, we need to add parameters (check server API description - http://code.google.com/p/igetscors/w/ServerAPI)
 
 the answer processing - I've broken this into 2 callbacks for the purpose of convenience so in the end we have NSDictionary as well, this is explained by this sample code:
 
