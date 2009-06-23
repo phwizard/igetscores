@@ -24,11 +24,9 @@ An example of data returned:
 
 Parameters:
 
-|| *subgame_id* ||
-Value is an integer number. || Subgame ID.
+|| *subgame_id* || Value is an integer number. || Subgame ID.  ||
 
-|| *limit*||
-Value is an integer number,|| defines how many records to display. For example, you need to display top 10, then you put limit=10
+|| *limit*|| Value is an integer number,|| defines how many records to display. For example, you need to display top 10, then you put limit=10  ||
 
 *preview*
 Value is an integer number, adds a 'virtual' score to the table - score taken from _preview_ value.
