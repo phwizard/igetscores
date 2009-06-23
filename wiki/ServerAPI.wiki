@@ -24,7 +24,7 @@ An example of data returned:
 
 Parameters:
 
-|| *subgame_id* || Integer || Subgame ID.  ||
+|| *subgame_id* || Integer || Subgame ID (you should know your subgame ID - this is static)  ||
 
 || *limit*|| Integer || defines how many records to display. For example, you need to display top 10, then you put limit=10  ||
 
