@@ -17,6 +17,7 @@
 	SEL        callbackFailSelector;
 	OAMutableURLRequest *request;
 	id			pointer;
+	XMLTreeParser *parser;
 }
 
 + (id) queueDataRequest: (OAMutableURLRequest*) aRequest 

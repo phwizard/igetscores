@@ -13,7 +13,7 @@
 + (id) queueDataRequest: (OAMutableURLRequest*) aRequest 
 					   withIdentifier:(NSInteger)anIdentifier withCallbackTarget:(id)aTarget 
 		   withCallbackFinishSelector:(SEL)aSelector withCallbackFailSelector: (SEL) aFailSelector {
-	OnlineScoreOperation *thisDataLoaderOperation = [[OnlineScoreOperation alloc] init]; // autorelease];
+	OnlineScoreOperation *thisDataLoaderOperation = [[OnlineScoreOperation alloc] init];
 	
 	thisDataLoaderOperation->callbackTarget = aTarget;
 	thisDataLoaderOperation->callbackFinishSelector = aSelector;
@@ -28,9 +28,10 @@
 	
 	NSString *str = [[NSString alloc] initWithBytes: [data bytes] length: [data length] encoding: NSUTF8StringEncoding];
 	NSLog(@"xml: %@", str);
+	[str release];
 	
 	if (ticket.didSucceed) {		
-		XMLTreeParser *parser = [[XMLTreeParser alloc] init];
+		parser = [[XMLTreeParser alloc] init];
 		XMLTreeNode* rootNode = [parser parse: data];
 
 		if (rootNode) {
@@ -40,9 +41,9 @@
 		} else {
 			if ([callbackTarget respondsToSelector: callbackFailSelector]) {
 				[callbackTarget performSelector: callbackFailSelector withObject: nil withObject: self];
+				
 			}		
 		}
-		[parser release];
 	} else {
 		if ([callbackTarget respondsToSelector: callbackFailSelector]) {
 			[callbackTarget performSelector: callbackFailSelector withObject: nil withObject: self];
@@ -63,6 +64,11 @@
 				didFinishSelector: @selector(didFinishSelector:withData:)
 				  didFailSelector: @selector(queryFailed:didFailWithError:)];
 	[fetcher release];
+}
+
+- (void) dealloc {
+	if (parser) [parser release];
+	[super dealloc];
 }
 
 @end

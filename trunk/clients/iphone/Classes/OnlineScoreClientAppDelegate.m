@@ -15,7 +15,7 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-	[[OnlineScore getInstance] setConsumerKey: @"somekey" andSecret: @"somesecret"];
+	[[OnlineScore getInstance] setConsumerKey: @"testkey" andSecret: @"testsecret"];
 	[[OnlineScore getInstance] getAccessTokenWithDelegate: self callbackSelector: @selector(gotAccesToken:)];
 
     // Override point for customization after application launch
@@ -27,7 +27,7 @@
 		NSLog(@"access granted!");
 		
 		[[OnlineScore getInstance] addScore: [NSDictionary dictionaryWithObjectsAndKeys: 
-											  @"1", @"subgame_id",
+											  @"7", @"subgame_id",
 											  @"1000" , @"value",
 											  @"test", @"name",
 											  @"15", @"limit_below",
