@@ -105,8 +105,9 @@ static NSString *getAccTokenURL = @"http://www.igetscores.com/hs2/get_acc_token.
 										   withCallbackFinishSelector: selector
 											 withCallbackFailSelector: failSelector];
 	[params dealloc]; 
-	[request release];
+//	[request release];
 	[operationQueue addOperation: op];
+	[op release];
 	return op;	
 }
 

@@ -130,11 +130,12 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
     // sign
 	// Secrets must be urlencoded before concatenated with '&'
 	// TODO: if later RSA-SHA1 support is added then a little code redesign is needed
+	 NSLog(@"before sign");
     signature = [signatureProvider signClearText:[self _signatureBaseString]
                                       withSecret:[NSString stringWithFormat:@"%@&%@",
 												  [consumer.secret URLEncodedString],
                                                   [token.secret URLEncodedString]]];
-    
+    NSLog(@"preparing");
     // set OAuth headers
     NSString *oauthToken;
     if ([token.key isEqualToString:@""])

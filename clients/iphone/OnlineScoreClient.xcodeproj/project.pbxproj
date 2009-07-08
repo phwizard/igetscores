@@ -31,7 +31,6 @@
 		34D722E40FD7F3D000644FCB /* OAToken_KeychainExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D722C80FD7F3D000644FCB /* OAToken_KeychainExtensions.m */; };
 		34D722E50FD7F3D000644FCB /* OnlineScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D722CC0FD7F3D000644FCB /* OnlineScore.m */; };
 		34D722E60FD7F3D000644FCB /* OnlineScoreOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D722CE0FD7F3D000644FCB /* OnlineScoreOperation.m */; };
-		34D722E70FD7F3D000644FCB /* XMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D722D00FD7F3D000644FCB /* XMLParser.m */; };
 		34D722E80FD7F3D000644FCB /* XMLTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D722D20FD7F3D000644FCB /* XMLTreeNode.m */; };
 		34D722E90FD7F3D000644FCB /* XMLTreeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D722D40FD7F3D000644FCB /* XMLTreeParser.m */; };
 /* End PBXBuildFile section */
@@ -85,8 +84,6 @@
 		34D722CC0FD7F3D000644FCB /* OnlineScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineScore.m; sourceTree = "<group>"; };
 		34D722CD0FD7F3D000644FCB /* OnlineScoreOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineScoreOperation.h; sourceTree = "<group>"; };
 		34D722CE0FD7F3D000644FCB /* OnlineScoreOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineScoreOperation.m; sourceTree = "<group>"; };
-		34D722CF0FD7F3D000644FCB /* XMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLParser.h; sourceTree = "<group>"; };
-		34D722D00FD7F3D000644FCB /* XMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLParser.m; sourceTree = "<group>"; };
 		34D722D10FD7F3D000644FCB /* XMLTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLTreeNode.h; sourceTree = "<group>"; };
 		34D722D20FD7F3D000644FCB /* XMLTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLTreeNode.m; sourceTree = "<group>"; };
 		34D722D30FD7F3D000644FCB /* XMLTreeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLTreeParser.h; sourceTree = "<group>"; };
@@ -232,8 +229,6 @@
 		34D723040FD7F5C100644FCB /* XMLParser */ = {
 			isa = PBXGroup;
 			children = (
-				34D722CF0FD7F3D000644FCB /* XMLParser.h */,
-				34D722D00FD7F3D000644FCB /* XMLParser.m */,
 				34D722D10FD7F3D000644FCB /* XMLTreeNode.h */,
 				34D722D20FD7F3D000644FCB /* XMLTreeNode.m */,
 				34D722D30FD7F3D000644FCB /* XMLTreeParser.h */,
@@ -315,7 +310,6 @@
 				34D722E40FD7F3D000644FCB /* OAToken_KeychainExtensions.m in Sources */,
 				34D722E50FD7F3D000644FCB /* OnlineScore.m in Sources */,
 				34D722E60FD7F3D000644FCB /* OnlineScoreOperation.m in Sources */,
-				34D722E70FD7F3D000644FCB /* XMLParser.m in Sources */,
 				34D722E80FD7F3D000644FCB /* XMLTreeNode.m in Sources */,
 				34D722E90FD7F3D000644FCB /* XMLTreeParser.m in Sources */,
 			);

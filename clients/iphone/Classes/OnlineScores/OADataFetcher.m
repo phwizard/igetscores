@@ -38,12 +38,16 @@
     delegate = aDelegate;
     didFinishSelector = finishSelector;
     didFailSelector = failSelector;
-    
+	NSLog(@"before preparing");
     [request prepare];
+	
+	NSLog(@"after preparing");
     
     responseData = [NSURLConnection sendSynchronousRequest:request
                                          returningResponse:&response
                                                      error:&error];
+	
+	NSLog(@"continue");
 	
     if (response == nil || responseData == nil || error != nil) {
         OAServiceTicket *ticket= [[OAServiceTicket alloc] initWithRequest: request
@@ -51,10 +55,10 @@
                                                                didSucceed: NO];
 		
 		NSLog(@"error: %@", [error localizedDescription]);
-      //  [delegate performSelector: didFailSelector
-        //               withObject: ticket
-          //             withObject: error];
-		[aDelegate queryFailed: ticket didFailWithError: error];
+        [delegate performSelector: didFailSelector
+                       withObject: ticket
+                       withObject: error];
+		//[aDelegate queryFailed: ticket didFailWithError: error];
     } else {
         OAServiceTicket *ticket = [[OAServiceTicket alloc] initWithRequest:request
                                                                   response:response
