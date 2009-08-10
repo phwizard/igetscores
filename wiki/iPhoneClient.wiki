@@ -75,7 +75,7 @@ The following step is:
 
 }}}
 
-The parameters get packed into Dictionary, the full description of possible parameters is given in [http://code.google.com/p/igetscores/wiki/ServerAPI ServerAPII page here. In the example given, it will fetch 50 records starting from 0 position, e.g. top 50. With each request there should go functions processing the successful and unsuccessful requests. XML processing at the moment should be carried out by developers, our client only does the translation into xmltreenode (check sources).
+The parameters get packed into Dictionary, the full description of possible parameters is given in [http://code.google.com/p/igetscores/wiki/ServerAPI ServerAPI] page here. In the example given, it will fetch 50 records starting from 0 position, e.g. top 50. With each request there should go functions processing the successful and unsuccessful requests. XML processing at the moment should be carried out by developers, our client only does the translation into xmltreenode (check sources).
 
 3) Adding new score
 
