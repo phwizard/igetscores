@@ -7,8 +7,10 @@ iGetScores DB maintenance scripts and SQL requests
 
 === Delete all scores lower than X and older than Y days ===
 
+
 Delete from custom fields.
 
+{{{
 DELETE
 FROM custom_fields_values
 WHERE score_id
@@ -23,10 +25,11 @@ AND TIMESTAMP < DATE_SUB( NOW( ) , INTERVAL *Y*
 DAY )
 )
 )
-
+}}}
 
 Delete from scores
 
+{{{
 DELETE 
 FROM  `scores` 
 WHERE (
@@ -35,3 +38,4 @@ AND value < *X*
 AND TIMESTAMP < DATE_SUB( NOW( ) , INTERVAL *Y* 
 DAY )
 )
+}}}
