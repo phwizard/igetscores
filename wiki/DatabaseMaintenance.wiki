@@ -4,6 +4,14 @@
 
 iGetScores DB maintenance scripts and SQL requests
 
+=== Select TOP X scores ===
+
+{{{
+ SELECT *
+FROM scores
+ORDER BY value DESC
+LIMIT *X*
+}}} 
 
 === Delete all scores lower than X and older than Y days ===
 
