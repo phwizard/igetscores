@@ -1,0 +1,37 @@
+#summary iGetScores DB maintenance
+
+= Maintenance =
+
+iGetScores DB maintenance scripts and SQL requests
+
+
+=== Delete all scores lower than X and older than Y days ===
+
+Delete from custom fields.
+
+DELETE
+FROM custom_fields_values
+WHERE score_id
+IN (
+
+SELECT id
+FROM  `scores` 
+WHERE (
+subgame_id = *SUBGAME_ID*
+AND value < *X*
+AND TIMESTAMP < DATE_SUB( NOW( ) , INTERVAL *Y* 
+DAY )
+)
+)
+
+
+Delete from scores
+
+DELETE 
+FROM  `scores` 
+WHERE (
+subgame_id = *SUBGAME_ID*
+AND value < *X*
+AND TIMESTAMP < DATE_SUB( NOW( ) , INTERVAL *Y* 
+DAY )
+)
