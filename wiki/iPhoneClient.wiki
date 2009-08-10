@@ -1,7 +1,98 @@
 #summary Explains how our iPhone client works - also check the examples of implementations.
+#labels Phase-Implementation
 
 =iPhone client=
 
-coming soon
 
-_a guide by Andrew Kopanev_
+1) To work with iGetScores server the client has to authorize (OAuth library is taking care of this). Each app has a unique code / secret to access the server, here is the code sample:
+
+{{{
+        [[OnlineScore getInstance] setConsumerKey: @"testkey" andSecret: @"testsecret"];
+        [[OnlineScore getInstance] getAccessTokenWithDelegate:self callbackSelector:@selector(gotAccessToken:)];
+}}}
+
+
+As a result, the callback gotAccessToken (or whatever you call it) will be called with the parameter:
+
+{{{
+- (void)gotAccessToken:(BOOL)granted {
+    if (granted) {
+
+    } else NSLog(@"wtf, maan...");
+}
+}}}
+
+We plan to make a queue of requests here; but at the moment, all the requests sent before getting a positive authorization will not be processed.
+
+The following step is:
+
+2) Getting scores, check example (you need to know the subgame ID(s) for your app):
+
+{{{
+    [[OnlineScore getInstance] getScores: [NSDictionary dictionaryWithObjectsAndKeys: 
+                                          @"7", @"subgame_id",
+                                           @"0", @"index",
+                                           @"50", @"limit",
+                                           nil]
+                                delegate: self
+                        callbackSelector: @selector(gotScores:forOperation:)
+                    callbackFailSelector: @selector(scoresFail:forOperation:)];
+
+...
+
+- (void) gotScores: (XMLTreeNode*)rootNode forOperation: (OnlineScoreOperation*) op {
+    NSString *errorThere = nil;
+    NSDictionary *scoreSettings = nil;
+    [self addToConsole:@"gotScores"];
+    
+   if (rootNode) {
+            
+        XMLTreeNode *gameScores = [rootNode findChild: @"game_scores"];
+        if (gameScores) {
+            scoreSettings = [gameScores attributes];
+            NSLog(@"error code: %@, count: %@", [scoreSettings objectForKey: @"error"], [scoreSettings objectForKey: @"count"]);
+            NSArray *scores = [gameScores findChildren: @"score"];
+            if (scores && [scores count]) {
+                int index = [scores count];
+                for (int i = 0; i < index; i++) {
+                    XMLTreeNode *node = (XMLTreeNode*)[scores objectAtIndex: i];
+                    
+                    XMLTreeNode *subnode = [node findChild: @"name"];
+                    NSString *str = [subnode.text stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+                    subnode = [node findChild: @"value"];
+                    if (str && subnode) {
+                        [self addToConsole:str];
+                    }
+                }
+            } else errorThere = @"no scores yet";
+        }
+    }
+}
+
+- (void)scoresFail:(XMLTreeNode*) dict forOperation:(OnlineScoreOperation*) op {
+    [self addToConsole:@"scoresFail"];
+}
+
+}}}
+
+The parameters get packed into Dictionary, the full description of possible parameters is given in ServerAPI page here. In the example given, it will fetch 50 records starting from 0 position, e.g. top 50. With each request there should go functions processing the successful and unsuccessful requests. XML processing at the moment should be carried out by developers, our client only does the translation into xmltreenode (check sources).
+
+3) Adding new score
+
+{{{
+    [[OnlineScore getInstance] addScore: [NSDictionary dictionaryWithObjectsAndKeys: 
+                                          @"7", @"subgame_id",
+                                          [NSString stringWithFormat: @"%d", someValue] , @"value",
+                                          textField.text, @"name",
+                                          @"0", @"limit_above",
+                                          @"10", @"limit_below",
+                                          nil]
+                               delegate: self
+                       callbackSelector: nil
+                   callbackFailSelector: nil];
+}}}
+
+is very similar to gettins scores. A detailed info on parameters is given in ServerAPI page. 
+
+
+_a guide by Andrew Kopanev, translated by Taras Filatov_
