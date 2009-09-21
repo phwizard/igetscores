@@ -1,0 +1,28 @@
+#summary A readme file for those who want to install their own server instance using our sources.
+#labels Phase-Deploy
+
+= Installing your own iGetScores server instance guide =
+
+
+ 1. Upload all the files on your webserver via FTP ( for example www.mygame.com/hs/*.* )
+    Make sure you're uploading to web folder, usually it would be under /public_html/
+
+ 2. Edit /inc/config.php - enter your MySQL database access details
+
+ 3. Add update_countries.php to cron jobs. For cPanel equipped hostings you would just go to
+    Advanced - Cron jobs and then when in standard view, put in something like this (depends
+    on your PHP path and of course your high scores server location):
+
+    /usr/local/bin/php -f /home/igetscor/public_html/hs2/update_countries.php
+
+    Make it run every fifteen minutes or so.
+
+ 4. Run the igetscor.sql database dump (either via shell or import it using phpMyAdmin).
+
+ 5. Edit the database via phpMyAdmin and add a record for your game in 'oauth_server_registry'.
+    Make sure 'osr_id' and 'osr_usa_id_ref' have the same values.
+
+ 6. Go to 'subgames' table and add subgames (at least one) for your game. 'game_id' should correspond to 'osr_id' in 'oauth_server_registry'.
+
+
+
