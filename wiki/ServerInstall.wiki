@@ -4,16 +4,15 @@
 = Installing your own iGetScores server instance guide =
 
 
- 1. Upload all the files on your webserver via FTP ( for example www.mygame.com/hs/*.* )
+ 1. Upload all the files on your webserver via FTP ( for example www.mygame.com/hs/ )
     Make sure you're uploading to web folder, usually it would be under /public_html/
 
  2. Edit /inc/config.php - enter your MySQL database access details
 
-3. Add maintenance scripts to cron jobs. For cPanel equipped hostings you would just go to
+ 3. Add maintenance scripts to cron jobs. For cPanel equipped hostings you would just go to
 Advanced - Cron jobs and then when in standard view, put in something like this (depends on your PHP path and of course your high scores server location):
 /usr/local/bin/php -f /home/igetscor/public_html/hs/maintenance/every15min.php
 Set up the corresponding launch intervals.
-
 
     /usr/local/bin/php -f /home/igetscor/public_html/hs2/update_countries.php
 
@@ -25,4 +24,3 @@ Set up the corresponding launch intervals.
     Make sure 'osr_id' and 'osr_usa_id_ref' have the same values.
 
  6. Go to 'subgames' table and add subgames (at least one) for your game. 'game_id' should correspond to 'osr_id' in 'oauth_server_registry'.
-
